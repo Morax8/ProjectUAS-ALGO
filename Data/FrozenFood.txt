@@ -1,0 +1,20 @@
+Nugget Kanzler#0098782#54000
+Sosis Ayam#0098783#32000
+Sosis Sapi#0098784#35000
+Daging Cincang#0098785#68000
+Chicken Karaage#0098786#52000
+Fish Stick#0098787#47000
+Bakso Ikan#0098788#30000
+Dimsum Ayam#0098789#40000
+Tempura#0098790#45000
+Kentang Goreng#0098791#29000
+Saporo#0098792#60000
+Pizza Margherita#0098793#75000
+Pizza Pepperoni#0098794#80000
+Pizza Vegetarian#0098795#72000
+Sosis Sapi isi Keju#0098796#37000
+Sosis Ayam isi Keju#0098797#34000
+Roti Canai#0098798#28000
+Pastry Ayam#0098799#36000
+Kulit Lumpia#0098800#31000
+Gyoza#0098801#33000
