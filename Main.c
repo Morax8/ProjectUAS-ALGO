@@ -4,7 +4,6 @@
 #include <stdbool.h>
 #include <ctype.h>
 #define MAX_HEAP_SIZE 200
-
 typedef struct BSTNode
 {
     char name[100];
@@ -225,6 +224,15 @@ void deleteMin(MinHeap *heap)
     heapifyDown(heap, 0);
 }
 
+void deleteMinSilent(MinHeap *heap)
+{
+    if (heap->size == 0)
+        return;
+
+    heap->items[0] = heap->items[--heap->size];
+    heapifyDown(heap, 0);
+}
+
 void bstToHeap(BSTNode *root, MinHeap *heap)
 {
     if (!root)
@@ -232,6 +240,29 @@ void bstToHeap(BSTNode *root, MinHeap *heap)
     insertHeap(heap, root->name, root->code, root->price);
     bstToHeap(root->left, heap);
     bstToHeap(root->right, heap);
+}
+
+void printHeapAscending(MinHeap *originalHeap)
+{
+    // Copy heap biar data aslinya nggak berubah
+    MinHeap tempHeap;
+    tempHeap.size = originalHeap->size;
+    for (int i = 0; i < originalHeap->size; i++)
+    {
+        tempHeap.items[i] = originalHeap->items[i];
+    }
+
+    // Header tabel
+    printf("\n%-4s| %-35s | %-10s | %-13s\n", "No", "Nama Produk", "Kode", "Harga");
+    printf("-------------------------------------------------------------------------------\n");
+
+    int no = 1;
+    while (tempHeap.size > 0)
+    {
+        printf("%-4d| %-35s | %-10s | Rp %-10.0f\n", no++,
+               tempHeap.items[0].name, tempHeap.items[0].code, tempHeap.items[0].price);
+        deleteMinSilent(&tempHeap);
+    }
 }
 
 // Sorting
@@ -531,12 +562,7 @@ void menuHeap(BSTNode *root, MinHeap *heap, int *heapInitialized)
                 printf("Heap belum dikonversi.\n");
                 break;
             }
-            printf("=== Isi Heap ===\n");
-            for (int i = 0; i < heap->size; i++)
-            {
-                printf("%-4d| %-35s | %-10s | Rp %-10.0f\n", i + 1,
-                       heap->items[i].name, heap->items[i].code, heap->items[i].price);
-            }
+            printHeapAscending(heap);
             break;
 
         case 3:
